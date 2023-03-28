@@ -1,38 +1,176 @@
-.App {
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.first-main {
+  background: url("./assets/img1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* filter: blur(3px);
+    -webkit-filter: blur(3px); */
+}
+.first-main-div {
+  color: white;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-control-borderless {
+  border: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+/* ------------------------------------- */
+/* ------------------------------------- */
+.best-stadium-section {
+  background: url("./assets/img3.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+div.carousel-nav-icon > svg {
+  height: 48px;
+  width: 48px;
+}
+
+html[data-bs-theme="dark"] div.carousel-nav-icon > svg {
+  fill: #fff !important;
+}
+.carousel-nav-svg {
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item > div {
+    display: none;
+  }
+  .carousel-inner .carousel-item > div:first-child {
+    display: block;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.second-footer {
+  background-color: #145436;
+}
+
+.search form {
+  border-color: #198754;
+  border-width: 3px;
+  position: relative;
+  bottom: 40px;
+}
+.about {
+  background: url("./assets/img8.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.about-item {
+  background-color: #08291aa9;
+  border-radius: 20px;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.register-main {
+  background: url("./assets/img9.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.detail-container {
+  background-color: #f4fcea;
+}
+.price-container {
+  background: radial-gradient(
+    circle,
+    rgba(47, 244, 27, 1) 0%,
+    rgb(8, 101, 55) 33%,
+    rgb(91, 15, 30) 100%
+  );
+  padding: 3px;
+  margin: 0px 10px;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.reservation-btn {
+  background-image: linear-gradient(
+    to right,
+    #348f50 0%,
+    #56b4d3 51%,
+    #348f50 100%
+  );
+  margin: 20px 10px;
+  padding: 10px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.reservation-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.text1 {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.text2 {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.text3 {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.slide1{
+  position: relative;
+}
+.slide2{
+  position: relative;
+}
+.slide3{
+  position: relative;
 }
