@@ -50,7 +50,7 @@ const getReservationByOwnerID = async (ownerId) => {
                     }
                 ]
             }
-            ]
+            ], order: [['createdAt', 'DESC']]
         })
         // console.log(reservations)
         return {
@@ -114,6 +114,44 @@ const cancelReservation = async (reservationId) => {
 
     }
 }
+const getReservationByPlayerID = async (playerId) => {
+    try {
+        const reservations = await reservationModel.findAll({
+            where: {
+                playerId: playerId
+            },
+            include: [{
+                model: playerModel,
+                attributes: ['name', 'tel']
+            }, {
+                model: stadiumModel,
+                attributes: ['title', 'address', 'hourPrice'],
+                include: [
+                    {
+                        model: ownerModel,
+                        attributes: ['name', 'tel']
+                    }
+                ]
+            }
+            ], order: [['createdAt', 'DESC']]
+        })
+        // console.log(reservations)
+        return {
+            type: "Success",
+            message: "successful get reservation",
+            statusCode: 200,
+            reservations: reservations,
+        };
+    }
+    catch (err) {
+        return {
+            type: "Error",
+            message: "failed get reservation",
+            statusCode: 401,
+        };
 
-module.exports = { addReservation, getReservationByOwnerID, verifyReservation, cancelReservation };
+
+    }
+}
+module.exports = { addReservation, getReservationByOwnerID, verifyReservation, cancelReservation, getReservationByPlayerID };
 

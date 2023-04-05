@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 //verify the authentication for users
 const verifyOwner = (req, res, next) => {
     const token = req.headers["x-access-token"] || req.headers["token"];
+    console.log("token :" ,token)
 
     if (!token) {
         return res.status(403).json({
@@ -39,7 +40,6 @@ const verifyOwner = (req, res, next) => {
 
 const verifyPlayer = (req, res, next) => {
     const token = req.headers["x-access-token"] || req.headers["token"];
-
     if (!token) {
         return res.status(403).json({
             Type: "error",

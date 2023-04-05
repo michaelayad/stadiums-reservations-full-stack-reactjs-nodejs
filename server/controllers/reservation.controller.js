@@ -82,4 +82,25 @@ const cancelReservation = async (req, res, next) => {
         message,
     });
 };
-module.exports = { addReservation, getReservationByOwnerID, verifyReservation,cancelReservation };  
+const getReservationByPlayerID= async (req, res, next) => {
+    //  Calling sign up service
+    const { type, message, statusCode, reservations } = await reservationService.getReservationByPlayerID(
+        req.playerId
+    );
+
+    //  Check if something went wrong
+    if (type === "Error") {
+        return res.status(statusCode).json({
+            type,
+            message,
+        });
+    }
+
+    //  If everything is OK, send data
+    return res.status(statusCode).json({
+        type,
+        message,
+        reservations
+    });
+};
+module.exports = { addReservation, getReservationByOwnerID, verifyReservation,cancelReservation,getReservationByPlayerID };  
