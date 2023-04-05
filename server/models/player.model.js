@@ -3,10 +3,10 @@ const sequelize = require("../utils/database.js");
 
 const playerModel = sequelize.define("player", {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
     },
     name: { type: DataTypes.STRING, allowNull: false },
     email: {

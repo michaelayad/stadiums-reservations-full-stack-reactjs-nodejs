@@ -16,6 +16,9 @@ import axiosInstance from "./axios/axiosInstance";
 import Profile from "./pages/profile/profile";
 import AllStadiums from "./pages/allStadiums/allStadiums";
 import StadiumDetails from "./pages/stadiumDetails/stadiumDetails";
+import AddStadium from "./pages/addStadium/addStadium";
+import AddHours from "./pages/addHours/addHours";
+import Reservation from "./pages/reservation/reservation";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +62,9 @@ function App() {
         <Route path="/owner-login" element={!user.isAuthenticated ? <OwnerLogin /> : <Navigate to="/" />} />
         <Route path="/player-login" element={!user.isAuthenticated ? <PlayerLogin /> : <Navigate to="/" />} />
         <Route path="/Profile" element={user.isAuthenticated ? <Profile /> : <Navigate to="/" />} />
+        <Route path="/add-stadium" element={user.isAuthenticated &&user.type==="owner" ? <AddStadium /> : <Navigate to="/" />} />
+        <Route path="/add-hours/:id" element={user.isAuthenticated &&user.type==="owner" ? <AddHours /> : <Navigate to="/" />} />
+        <Route path="/reservation/:id" element={user.isAuthenticated &&user.type==="player" ? <Reservation /> : <Navigate to="/" />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/all-stadiums" element={<AllStadiums />} />
         <Route path="/stadium/:id" element={<StadiumDetails />} />

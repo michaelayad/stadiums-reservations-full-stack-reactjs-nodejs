@@ -1,14 +1,21 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import axiosInstance from "../../axios/axiosInstance";
+import { useSelector } from "react-redux";
 
 
 
 
 const StadiumDetails = () => {
     const { id } = useParams();
+    const user = useSelector((state) => state.auth);
     const [stadium, setStadium] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [days, setDays] = useState([]);
+    const [hours, setHours] = useState([]);
+    const [day, setDay] = useState([]);
+    const [hour, setHour] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (isLoading) {
@@ -19,12 +26,57 @@ const StadiumDetails = () => {
                     setIsLoading(false)
                     setStadium(res.data.stadium);
                     console.log(res.data.stadium);
+
                 })
                 .catch((err) => { });
         }
-
-
     });
+
+    useEffect(() => {
+        if (!isLoading) {
+            // console.log(stadium)
+            if (stadium && stadium.availableHours) {
+                const days = stadium.availableHours.map((hour) => hour.day);
+                const uniqueDays = [...new Set(days)];
+                setDays(uniqueDays);
+                // console.log(uniqueDays);
+            }
+        }
+
+    }, [isLoading, stadium])
+    const handleDay = (event) => {
+        const value = event.target.value
+        if (value) {
+            console.log(value);
+            const h = [];
+            if (stadium && stadium.availableHours) {
+                stadium.availableHours.forEach(hour => {
+                    if (hour.day === value) {
+                        h.push(hour.hour);
+                    }
+                });
+                setHours(h);
+
+                console.log(h);
+            }
+            setDay(value);
+            setHour("");
+        }
+    }
+    const handleHour = (event) => {
+        const value = event.target.value
+        if (value) {
+            console.log(value)
+            setHour(value);
+        }
+    }
+    const handleReserva = () => {
+        if (hour && day) {
+            console.log(hour, day);
+            navigate(`/reservation/${stadium.id}?day=${day}&hour=${hour}`, { state: { "day": day, "hour": hour } })
+
+        }
+    }
     return (<>
         <div className="container-fluid">
             <div className="container py-5">
@@ -79,25 +131,36 @@ const StadiumDetails = () => {
                                 <div className="col">
                                     <select
                                         className="form-select"
-                                        aria-label="Default select example"
-                                        id="days-select"
+
+                                        value={day}
+                                        onChange={handleDay}
                                     >
-                                        <option selected>الأيام المتاحة</option>
+                                        <option value="" selected>الأيام المتاحة</option>
+                                        {
+                                            days.map((day, index) => {
+                                                return <option value={day} key={index}>{day}</option>;
+                                            })
+                                        }
                                     </select>
                                 </div>
                                 <div className="col">
                                     <select
                                         className="form-select"
-                                        aria-label="Default select example"
-                                        id="hours-select"
+                                        value={hour}
+                                        onChange={handleHour}
                                     >
-                                        <option selected>الساعات المتاحة</option>
+                                        <option value="" selected>الساعات المتاحة</option>
+                                        {
+                                            hours.map((hour, index) => {
+                                                return <option value={hour} key={index}>{hour}</option>;
+                                            })
+                                        }
                                     </select>
                                 </div>
                             </div>
-                            <button className="reservation-btn" id="reserve-btn">احجز</button>
-                            <p className="text-secondary d-none" id="reserve-hint">
-                                للحجز : قم بتسجيل الدخول أولا
+                            <button className="reservation-btn" disabled={user.isAuthenticated && user.type === "player" ? false : true} onClick={handleReserva}>احجز</button>
+                            <p className={`text-secondary ${user.isAuthenticated && user.type === "player" ? "d-none" : ""} `}>
+                                للحجز : قم بتسجيل الدخول كلاعب أولا
                             </p>
                         </div>
                     </div>
