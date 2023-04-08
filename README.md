@@ -19,7 +19,7 @@
 
 #### Front-end
 
-- Front-end Framework: `React.js (with Reduxjs/tooltik , axios and React-Router-Dom)`
+- Front-end Framework: `React.js (with Reduxjs/toolkit , axios and React-Router-Dom)`
 - Styling: `CSS` and `BOOTSTRAP`
 - Component Packages using : `react-slick` and `react-awesome-slider`
 
