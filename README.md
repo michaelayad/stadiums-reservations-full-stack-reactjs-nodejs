@@ -33,6 +33,7 @@
 ## Screenshots
 ![Example screenshot](./screenshots/1.png)
 ![Example screenshot](./screenshots/2.png)
+![Example screenshot](./screenshots/5.png)
 ![Example screenshot](./screenshots/3.png)
 ![Example screenshot](./screenshots/4.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
