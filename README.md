@@ -2,6 +2,11 @@
 > This is a full-stack web application that allows players to reserve stadiums or playgrounds and enables stadium owners to add their stadiums and available hours.
 > Live demo [_here_](https://stadiums-reservation-client-side.onrender.com/).
 
+## Table of Contents
+* [Features](#features)
+* [Technologies Used](#technologies-used)
+* [Screenshots](#screenshots)
+
 
 ## Features
 - User authentication and authorization system .
@@ -10,7 +15,7 @@
 - Responsive design for optimal user experience on mobile devices .
 
 
-## Technologies Used (MERN)
+## Technologies Used
 
 #### Front-end
 
